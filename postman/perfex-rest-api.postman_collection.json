@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "Perfex CRM REST API",
+    "_postman_id": "perfex-rest-api-examples-collection",
+    "description": "Examples for the REST API for Perfex CRM module by Themesic Interactive.\n\nProduct: https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/\nDocs: https://perfexcrm.themesic.com/apiguide/\n\nSetup: set the collection variables base_url (e.g. https://yourdomain.com/api) and authtoken, or import the bundled environment. Authentication is sent automatically as the authtoken header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "authtoken", "type": "string" },
+      { "key": "value", "value": "{{authtoken}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "base_url", "value": "https://yourdomain.com/api" },
+    { "key": "authtoken", "value": "YOUR_API_TOKEN" }
+  ],
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        { "name": "List customers", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/customers", "host": ["{{base_url}}"], "path": ["customers"] } } },
+        { "name": "Get customer by ID", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/customers/1", "host": ["{{base_url}}"], "path": ["customers", "1"] } } },
+        { "name": "Create customer", "request": { "method": "POST", "header": [], "body": { "mode": "formdata", "formdata": [
+          { "key": "company", "value": "Acme LTD", "type": "text" },
+          { "key": "vat", "value": "123456789", "type": "text" },
+          { "key": "phonenumber", "value": "+44 210 7298299", "type": "text" },
+          { "key": "website", "value": "https://example.com", "type": "text" },
+          { "key": "address", "value": "123 Road Street", "type": "text" },
+          { "key": "city", "value": "London", "type": "text" },
+          { "key": "zip", "value": "WC1 ASW", "type": "text" },
+          { "key": "country", "value": "235", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/customers", "host": ["{{base_url}}"], "path": ["customers"] } } },
+        { "name": "Update customer", "request": { "method": "PUT", "header": [], "body": { "mode": "formdata", "formdata": [
+          { "key": "company", "value": "Acme International LTD", "type": "text" },
+          { "key": "phonenumber", "value": "+44 200 0000000", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/customers/1", "host": ["{{base_url}}"], "path": ["customers", "1"] } } },
+        { "name": "Delete customer", "request": { "method": "DELETE", "header": [], "url": { "raw": "{{base_url}}/customers/1", "host": ["{{base_url}}"], "path": ["customers", "1"] } } }
+      ]
+    },
+    {
+      "name": "Contacts",
+      "item": [
+        { "name": "List contacts", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/contacts", "host": ["{{base_url}}"], "path": ["contacts"] } } },
+        { "name": "Create contact", "request": { "method": "POST", "header": [], "body": { "mode": "formdata", "formdata": [
+          { "key": "customer_id", "value": "1", "type": "text" },
+          { "key": "firstname", "value": "John", "type": "text" },
+          { "key": "lastname", "value": "Doe", "type": "text" },
+          { "key": "email", "value": "john.doe@example.com", "type": "text" },
+          { "key": "password", "value": "Str0ngP@ss", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/contacts", "host": ["{{base_url}}"], "path": ["contacts"] } } }
+      ]
+    },
+    {
+      "name": "Leads",
+      "item": [
+        { "name": "List leads", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/leads", "host": ["{{base_url}}"], "path": ["leads"] } } },
+        { "name": "Get lead by ID", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/leads/1", "host": ["{{base_url}}"], "path": ["leads", "1"] } } },
+        { "name": "Create lead", "request": { "method": "POST", "header": [], "body": { "mode": "formdata", "formdata": [
+          { "key": "name", "value": "Jane Prospect", "type": "text" },
+          { "key": "email", "value": "jane@prospect.com", "type": "text" },
+          { "key": "source", "value": "1", "type": "text" },
+          { "key": "status", "value": "1", "type": "text" },
+          { "key": "assigned", "value": "1", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/leads", "host": ["{{base_url}}"], "path": ["leads"] } } },
+        { "name": "Update lead", "request": { "method": "PUT", "header": [], "body": { "mode": "formdata", "formdata": [
+          { "key": "status", "value": "2", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/leads/1", "host": ["{{base_url}}"], "path": ["leads", "1"] } } },
+        { "name": "Delete lead", "request": { "method": "DELETE", "header": [], "url": { "raw": "{{base_url}}/leads/1", "host": ["{{base_url}}"], "path": ["leads", "1"] } } }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        { "name": "List invoices", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/invoices", "host": ["{{base_url}}"], "path": ["invoices"] } } },
+        { "name": "Get invoice by ID", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/invoices/1", "host": ["{{base_url}}"], "path": ["invoices", "1"] } } },
+        { "name": "Create invoice", "request": { "method": "POST", "header": [], "body": { "mode": "formdata", "formdata": [
+          { "key": "clientid", "value": "1", "type": "text" },
+          { "key": "date", "value": "2026-01-15", "type": "text" },
+          { "key": "duedate", "value": "2026-02-15", "type": "text" },
+          { "key": "currency", "value": "1", "type": "text" },
+          { "key": "newitems[1][description]", "value": "Consulting services", "type": "text" },
+          { "key": "newitems[1][qty]", "value": "2", "type": "text" },
+          { "key": "newitems[1][rate]", "value": "150.00", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/invoices", "host": ["{{base_url}}"], "path": ["invoices"] } } },
+        { "name": "Delete invoice", "request": { "method": "DELETE", "header": [], "url": { "raw": "{{base_url}}/invoices/1", "host": ["{{base_url}}"], "path": ["invoices", "1"] } } }
+      ]
+    },
+    {
+      "name": "Estimates",
+      "item": [
+        { "name": "List estimates", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/estimates", "host": ["{{base_url}}"], "path": ["estimates"] } } },
+        { "name": "Get estimate by ID", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/estimates/1", "host": ["{{base_url}}"], "path": ["estimates", "1"] } } }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        { "name": "List payments", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/payments", "host": ["{{base_url}}"], "path": ["payments"] } } }
+      ]
+    },
+    {
+      "name": "Projects",
+      "item": [
+        { "name": "List projects", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/projects", "host": ["{{base_url}}"], "path": ["projects"] } } },
+        { "name": "Get project by ID", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/projects/1", "host": ["{{base_url}}"], "path": ["projects", "1"] } } }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        { "name": "List tasks", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/tasks", "host": ["{{base_url}}"], "path": ["tasks"] } } },
+        { "name": "Get task by ID", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/tasks/1", "host": ["{{base_url}}"], "path": ["tasks", "1"] } } },
+        { "name": "Create task", "request": { "method": "POST", "header": [], "body": { "mode": "formdata", "formdata": [
+          { "key": "name", "value": "Follow up with client", "type": "text" },
+          { "key": "startdate", "value": "2026-01-15", "type": "text" },
+          { "key": "duedate", "value": "2026-01-20", "type": "text" },
+          { "key": "priority", "value": "2", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/tasks", "host": ["{{base_url}}"], "path": ["tasks"] } } }
+      ]
+    },
+    {
+      "name": "Items",
+      "item": [
+        { "name": "List items", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/items", "host": ["{{base_url}}"], "path": ["items"] } } }
+      ]
+    },
+    {
+      "name": "Common (lookups)",
+      "item": [
+        { "name": "Countries", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/common/countries", "host": ["{{base_url}}"], "path": ["common", "countries"] } } },
+        { "name": "Taxes", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/common/taxes", "host": ["{{base_url}}"], "path": ["common", "taxes"] } } },
+        { "name": "Currencies", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/common/currencies", "host": ["{{base_url}}"], "path": ["common", "currencies"] } } }
+      ]
+    }
+  ]
+}
