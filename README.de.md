@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/">
+    <img src="assets/perfex-crm-rest-api.jpg" alt="REST API für Perfex CRM — Perfex CRM mit Zapier, WooCommerce, n8n und Drittanbieter-Apps verbinden" width="100%">
+  </a>
+</p>
+
 # Perfex CRM REST API — Beispiele, Postman-Sammlung & Code-Snippets
 
 🌐 [English](README.md) · [简体中文](README.zh-CN.md) · [Português (BR)](README.pt-BR.md) · [Tiếng Việt](README.vi.md) · [Français](README.fr.md) · **Deutsch**
