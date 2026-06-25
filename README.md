@@ -1,6 +1,6 @@
-<p align="center">
+<p>
   <a href="https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/">
-    <img src="assets/perfex-crm-rest-api.jpg" alt="REST API for Perfex CRM — connect Perfex CRM with Zapier, WooCommerce, n8n and third-party apps" width="100%">
+    <img src="assets/perfex-crm-rest-api.jpg" alt="REST API for Perfex CRM — connect Perfex CRM with Zapier, WooCommerce, n8n and third-party apps">
   </a>
 </p>
 
