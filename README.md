@@ -24,6 +24,7 @@ module by **Themesic Interactive**: copy‑paste examples, an importable Postman
 endpoint catalogue.
 
 - 🧩 **Get the module:** https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/
+
 - 📖 **API guide / live docs:** https://perfexcrm.themesic.com/apiguide/
 
 ---
