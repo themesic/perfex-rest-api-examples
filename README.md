@@ -1,15 +1,21 @@
-# Perfex CRM REST API — Examples & Postman Collection
+# Perfex CRM REST API — Examples, Postman Collection & Code Snippets
 
-> Ready-to-use **Postman collection**, **code snippets** (cURL, PHP, Python, JavaScript) and a
-> resource **catalogue** for the [REST API module for Perfex CRM](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/).
+🌐 **English** · [简体中文](README.zh-CN.md) · [Português (BR)](README.pt-BR.md) · [Tiếng Việt](README.vi.md) · [Français](README.fr.md) · [Deutsch](README.de.md)
+
+> Ready-to-use **Postman collection**, **code snippets** (cURL, PHP, Python, JavaScript) and a resource
+> **catalogue** for the [REST API module for Perfex CRM](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/) —
+> the fastest way to **connect Perfex CRM with third‑party applications**.
 
 [![Postman](https://img.shields.io/badge/Postman-Collection-orange?logo=postman&logoColor=white)](postman/perfex-rest-api.postman_collection.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Perfex CRM](https://img.shields.io/badge/Perfex%20CRM-REST%20API-2c7be5)](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/)
 
-These examples target the **[REST API for Perfex CRM](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/)**
-by **Themesic Interactive** — the module that lets you connect your Perfex CRM with third‑party
-applications (Zapier, Make, n8n, custom apps) over a clean RESTful HTTP/JSON API.
+The **Perfex CRM REST API** lets you read and write customers, leads, invoices, estimates, projects,
+tasks and more over a clean HTTP/JSON interface — perfect for **CRM integration**, automation and custom
+apps. This repository is the practical companion to the
+**[REST API for Perfex CRM](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/)**
+module by **Themesic Interactive**: copy‑paste examples, an importable Postman collection, and a full
+endpoint catalogue.
 
 - 🧩 **Get the module:** https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/
 - 📖 **API guide / live docs:** https://perfexcrm.themesic.com/apiguide/
@@ -22,17 +28,17 @@ applications (Zapier, Make, n8n, custom apps) over a clean RESTful HTTP/JSON API
 | --- | --- |
 | [`postman/`](postman/) | Importable Postman **collection** + **environment** (`{{base_url}}`, `{{authtoken}}`) |
 | [`snippets/curl/`](snippets/curl/) | Copy‑paste `curl` commands for the most common calls |
-| [`snippets/php/`](snippets/php/) | PHP (Guzzle / cURL) examples |
+| [`snippets/php/`](snippets/php/) | PHP (cURL) examples |
 | [`snippets/python/`](snippets/python/) | Python (`requests`) examples |
-| [`snippets/javascript/`](snippets/javascript/) | JavaScript / Node (`fetch` + `axios`) examples |
+| [`snippets/javascript/`](snippets/javascript/) | JavaScript / Node (`fetch`) examples |
 | [`docs/`](docs/) | Authentication, pagination & filtering, errors & status codes |
 
 ---
 
 ## Quick start
 
-Every request is authenticated with the **`Authtoken`** header. Create a token in your Perfex admin
-under **API → API Management** (after activating the
+Every request to the Perfex CRM REST API is authenticated with the **`Authtoken`** header. Create a token
+in your Perfex admin under **API → API Management** (after activating the
 [REST API module](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/)),
 then call the API at `https://yourdomain.com/api/...`:
 
@@ -85,6 +91,21 @@ All endpoints follow a RESTful convention: `GET` list, `GET /:id` single, `POST`
 
 ---
 
+## Popular integrations & use cases
+
+The Perfex CRM REST API is commonly used to **connect Perfex CRM with third‑party applications** such as:
+
+- **Zapier / Make / n8n** — no‑code automation (e.g. create a Perfex lead from a web form or Facebook Lead Ads).
+- **Google Sheets / Power Automate** — sync customers, invoices or payments to spreadsheets and dashboards.
+- **Webhooks** — push Perfex events (new invoice, new lead) to Slack, Discord or your own backend.
+- **Custom apps & portals** — build a mobile app or customer portal on top of your Perfex data.
+- **Accounting & e‑commerce** — sync invoices and items with external billing or shop platforms.
+
+All of these are powered by the
+[REST API for Perfex CRM](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/) module.
+
+---
+
 ## Authentication (summary)
 
 | Method | How |
@@ -94,6 +115,33 @@ All endpoints follow a RESTful convention: `GET` list, `GET /:id` single, `POST`
 
 Tokens are created and scoped (per‑resource permissions) in **API → API Management**. Full details in
 [`docs/authentication.md`](docs/authentication.md).
+
+---
+
+## FAQ
+
+**Does Perfex CRM have a REST API?**
+Yes. The [REST API for Perfex CRM](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/)
+module adds a full RESTful HTTP/JSON API for customers, leads, invoices, estimates, projects, tasks and more.
+
+**How do I authenticate with the Perfex CRM API?**
+Send your token in the `Authtoken` HTTP header (or as an `?authtoken=` query parameter). See
+[`docs/authentication.md`](docs/authentication.md).
+
+**What is the base URL of the Perfex CRM API?**
+`https://yourdomain.com/api` — for example `https://yourdomain.com/api/customers`.
+
+**Can I connect Perfex CRM to Zapier, Make or n8n?**
+Yes — the REST API works with any automation platform that can send authenticated HTTP requests. See
+[Popular integrations](#popular-integrations--use-cases).
+
+**Is there a Postman collection for Perfex CRM?**
+Yes — import [`postman/perfex-rest-api.postman_collection.json`](postman/perfex-rest-api.postman_collection.json)
+and the bundled environment, set your `base_url` and `authtoken`, and start sending requests.
+
+**How do I create an invoice via the Perfex CRM API?**
+`POST https://yourdomain.com/api/invoices` with the invoice fields (and line items). See the Invoices
+folder in the Postman collection.
 
 ---
 
