@@ -1,6 +1,6 @@
-<p align="center">
+<p>
   <a href="https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/">
-    <img src="assets/perfex-crm-rest-api.jpg" alt="REST API for Perfex CRM — connect Perfex CRM with AI agents, Zapier, WooCommerce, n8n and third-party apps" width="100%">
+    <img src="assets/perfex-crm-rest-api.jpg" alt="REST API for Perfex CRM — connect Perfex CRM with AI agents, Zapier, WooCommerce, n8n and third-party apps">
   </a>
 </p>
 
@@ -27,6 +27,7 @@ module by **Themesic Interactive**: copy-paste examples, an importable Postman c
 endpoint catalogue.
 
 - 🧩 **Get the module:** https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/
+
 - 📖 **API guide / live docs:** https://perfexcrm.themesic.com/apiguide/
 - 🧾 **OpenAPI 3.1 spec:** `GET https://yourdomain.com/api/openapi.json`
 
