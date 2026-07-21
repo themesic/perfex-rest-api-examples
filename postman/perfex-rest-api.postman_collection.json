@@ -134,6 +134,110 @@
         { "name": "Taxes", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/common/taxes", "host": ["{{base_url}}"], "path": ["common", "taxes"] } } },
         { "name": "Currencies", "request": { "method": "GET", "header": [], "url": { "raw": "{{base_url}}/common/currencies", "host": ["{{base_url}}"], "path": ["common", "currencies"] } } }
       ]
+    },
+    {
+      "name": "MCP (AI agents)",
+      "item": [
+        { "name": "Initialize", "request": { "method": "POST", "header": [ { "key": "authtoken", "value": "{{authtoken}}" }, { "key": "Content-Type", "value": "application/json" } ], "body": { "mode": "raw", "raw": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{}}", "options": { "raw": { "language": "json" } } }, "url": { "raw": "{{base_url}}/mcp", "host": ["{{base_url}}"], "path": ["mcp"] } } },
+        { "name": "List tools", "request": { "method": "POST", "header": [ { "key": "authtoken", "value": "{{authtoken}}" }, { "key": "Content-Type", "value": "application/json" } ], "body": { "mode": "raw", "raw": "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\",\"params\":{}}", "options": { "raw": { "language": "json" } } }, "url": { "raw": "{{base_url}}/mcp", "host": ["{{base_url}}"], "path": ["mcp"] } } },
+        { "name": "Call tool", "request": { "method": "POST", "header": [ { "key": "authtoken", "value": "{{authtoken}}" }, { "key": "Content-Type", "value": "application/json" } ], "body": { "mode": "raw", "raw": "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\",\"params\":{\"name\":\"customers_list\",\"arguments\":{}}}", "options": { "raw": { "language": "json" } } }, "url": { "raw": "{{base_url}}/mcp", "host": ["{{base_url}}"], "path": ["mcp"] } } }
+      ]
+    },
+    {
+      "name": "Batch",
+      "item": [
+        { "name": "Batch operations", "request": { "method": "POST", "header": [ { "key": "authtoken", "value": "{{authtoken}}" }, { "key": "Content-Type", "value": "application/json" } ], "body": { "mode": "raw", "raw": "{\"operations\":[{\"tool\":\"customers_create\",\"args\":{\"company\":\"Acme LTD\"}},{\"tool\":\"invoices_get\",\"args\":{\"id\":1}}]}", "options": { "raw": { "language": "json" } } }, "url": { "raw": "{{base_url}}/batch", "host": ["{{base_url}}"], "path": ["batch"] } } }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        { "name": "List webhooks", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/webhooks", "host": ["{{base_url}}"], "path": ["webhooks"] } } },
+        { "name": "Get webhook", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/webhooks/3", "host": ["{{base_url}}"], "path": ["webhooks", "3"] } } },
+        { "name": "Create webhook", "request": { "method": "POST", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "body": { "mode": "formdata", "formdata": [
+          { "key": "name", "value": "Order sync", "type": "text" },
+          { "key": "url", "value": "https://hooks.example.com/perfex", "type": "text" },
+          { "key": "events[]", "value": "invoice_created", "type": "text" },
+          { "key": "events[]", "value": "lead_created", "type": "text" },
+          { "key": "secret", "value": "whsec_example_123", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/webhooks", "host": ["{{base_url}}"], "path": ["webhooks"] } } },
+        { "name": "Update webhook", "request": { "method": "PUT", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "body": { "mode": "formdata", "formdata": [
+          { "key": "name", "value": "Order sync (updated)", "type": "text" },
+          { "key": "url", "value": "https://hooks.example.com/perfex-v2", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/webhooks/3", "host": ["{{base_url}}"], "path": ["webhooks", "3"] } } },
+        { "name": "Delete webhook", "request": { "method": "DELETE", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/webhooks/3", "host": ["{{base_url}}"], "path": ["webhooks", "3"] } } },
+        { "name": "Toggle webhook", "request": { "method": "POST", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/webhooks/3/toggle", "host": ["{{base_url}}"], "path": ["webhooks", "3", "toggle"] } } },
+        { "name": "Event catalog", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/webhooks/events", "host": ["{{base_url}}"], "path": ["webhooks", "events"] } } },
+        { "name": "Delivery logs", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/webhooks/3/logs", "host": ["{{base_url}}"], "path": ["webhooks", "3", "logs"] } } }
+      ]
+    },
+    {
+      "name": "Automation (Zapier/Make/n8n)",
+      "item": [
+        { "name": "List resources", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/zapier/resources", "host": ["{{base_url}}"], "path": ["zapier", "resources"] } } },
+        { "name": "Poll resource", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/zapier/poll/customers?since=1705312200&limit=50", "host": ["{{base_url}}"], "path": ["zapier", "poll", "customers"], "query": [
+          { "key": "since", "value": "1705312200" },
+          { "key": "limit", "value": "50" }
+        ] } } },
+        { "name": "Test trigger", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/zapier/test/customers", "host": ["{{base_url}}"], "path": ["zapier", "test", "customers"] } } }
+      ]
+    },
+    {
+      "name": "Knowledge Base",
+      "item": [
+        { "name": "List articles", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/knowledge_base", "host": ["{{base_url}}"], "path": ["knowledge_base"] } } },
+        { "name": "Get article", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/knowledge_base/12", "host": ["{{base_url}}"], "path": ["knowledge_base", "12"] } } },
+        { "name": "Create article", "request": { "method": "POST", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "body": { "mode": "formdata", "formdata": [
+          { "key": "subject", "value": "Getting started guide", "type": "text" },
+          { "key": "description", "value": "<p>How to get started with our service.</p>", "type": "text" },
+          { "key": "articlegroup", "value": "1", "type": "text" },
+          { "key": "active", "value": "1", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/knowledge_base", "host": ["{{base_url}}"], "path": ["knowledge_base"] } } },
+        { "name": "Update article", "request": { "method": "PUT", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "body": { "mode": "formdata", "formdata": [
+          { "key": "subject", "value": "Getting started guide (updated)", "type": "text" },
+          { "key": "active", "value": "1", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/knowledge_base/12", "host": ["{{base_url}}"], "path": ["knowledge_base", "12"] } } },
+        { "name": "Delete article", "request": { "method": "DELETE", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/knowledge_base/12", "host": ["{{base_url}}"], "path": ["knowledge_base", "12"] } } },
+        { "name": "List groups", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/knowledge_base/groups", "host": ["{{base_url}}"], "path": ["knowledge_base", "groups"] } } },
+        { "name": "Create group", "request": { "method": "POST", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "body": { "mode": "formdata", "formdata": [
+          { "key": "name", "value": "Billing", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/knowledge_base/groups", "host": ["{{base_url}}"], "path": ["knowledge_base", "groups"] } } }
+      ]
+    },
+    {
+      "name": "Notes",
+      "item": [
+        { "name": "List notes (entity)", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/notes/customer/1", "host": ["{{base_url}}"], "path": ["notes", "customer", "1"] } } },
+        { "name": "Get note", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/notes/5", "host": ["{{base_url}}"], "path": ["notes", "5"] } } },
+        { "name": "Create note", "request": { "method": "POST", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "body": { "mode": "formdata", "formdata": [
+          { "key": "rel_type", "value": "customer", "type": "text" },
+          { "key": "rel_id", "value": "1", "type": "text" },
+          { "key": "description", "value": "Called the client about renewal.", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/notes", "host": ["{{base_url}}"], "path": ["notes"] } } },
+        { "name": "Update note", "request": { "method": "PUT", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "body": { "mode": "formdata", "formdata": [
+          { "key": "description", "value": "Client confirmed renewal for next year.", "type": "text" }
+        ] }, "url": { "raw": "{{base_url}}/notes/5", "host": ["{{base_url}}"], "path": ["notes", "5"] } } },
+        { "name": "Delete note", "request": { "method": "DELETE", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/notes/5", "host": ["{{base_url}}"], "path": ["notes", "5"] } } }
+      ]
+    },
+    {
+      "name": "List features (v3)",
+      "item": [
+        { "name": "Paginated", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/customers?page=2&per_page=20", "host": ["{{base_url}}"], "path": ["customers"], "query": [
+          { "key": "page", "value": "2" },
+          { "key": "per_page", "value": "20" }
+        ] } } },
+        { "name": "Select fields", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/customers?fields=id,company", "host": ["{{base_url}}"], "path": ["customers"], "query": [
+          { "key": "fields", "value": "id,company" }
+        ] } } },
+        { "name": "Sorted", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/customers?sort=-datecreated,company", "host": ["{{base_url}}"], "path": ["customers"], "query": [
+          { "key": "sort", "value": "-datecreated,company" }
+        ] } } },
+        { "name": "Date filter", "request": { "method": "GET", "header": [ { "key": "authtoken", "value": "{{authtoken}}" } ], "url": { "raw": "{{base_url}}/customers?created_after=2026-01-01&created_before=2026-12-31", "host": ["{{base_url}}"], "path": ["customers"], "query": [
+          { "key": "created_after", "value": "2026-01-01" },
+          { "key": "created_before", "value": "2026-12-31" }
+        ] } } }
+      ]
     }
   ]
 }
