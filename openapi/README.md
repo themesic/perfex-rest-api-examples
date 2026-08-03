@@ -1,7 +1,7 @@
-# OpenAPI 3.1 specification
+# OpenAPI 3.0 specification
 
 The REST API module describes its **entire surface - 72 paths, 139 operations -**
-as a machine-readable OpenAPI 3.1 document, generated live by the module itself
+as a machine-readable OpenAPI 3.0 document, generated live by the module itself
 so it always matches the installed version.
 
 ## Get it from your own installation
@@ -28,7 +28,8 @@ at a glance whether a spec file is current.
 
 ## Reference copy
 
-This folder is the home of a reference `perfex-rest-api.openapi.json` exported
-from the latest module release. Always prefer regenerating from your own
-install (command above) after updating the module, so the spec matches your
-version exactly.
+[`perfex-rest-api.openapi.json`](perfex-rest-api.openapi.json) in this folder
+was exported from module **v3.0.3** with the command above. The `servers` URL
+is a placeholder - point it at your own installation. Always prefer
+regenerating from your own install after updating the module, so the spec
+matches your version exactly.

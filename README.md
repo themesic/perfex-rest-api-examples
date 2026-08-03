@@ -13,7 +13,7 @@
 > the fastest way to **connect Perfex CRM with AI agents and third-party applications**.
 
 [![Postman](https://img.shields.io/badge/Postman-Collection-orange?logo=postman&logoColor=white)](postman/perfex-rest-api.postman_collection.json)
-[![OpenAPI 3.1](https://img.shields.io/badge/OpenAPI-3.1-6ba539?logo=openapiinitiative&logoColor=white)](https://perfexcrm.themesic.com/apiguide/)
+[![OpenAPI 3.0](https://img.shields.io/badge/OpenAPI-3.0-6ba539?logo=openapiinitiative&logoColor=white)](openapi/perfex-rest-api.openapi.json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Perfex CRM](https://img.shields.io/badge/Perfex%20CRM-REST%20API-2c7be5)](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/)
 
@@ -29,7 +29,7 @@ endpoint catalogue.
 - 🧩 **Get the module:** https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/
 
 - 📖 **API guide / live docs:** https://perfexcrm.themesic.com/apiguide/
-- 🧾 **OpenAPI 3.1 spec:** `GET https://yourdomain.com/api/openapi.json`
+- 🧾 **OpenAPI 3.0 spec:** `GET https://yourdomain.com/api/openapi` ([reference copy](openapi/perfex-rest-api.openapi.json))
 
 ---
 
@@ -45,7 +45,7 @@ endpoint catalogue.
 | 🗒️ **Notes** | `/api/notes` | Polymorphic notes across 12 entity types |
 | 📄 **Smarter lists** | any list endpoint | Opt-in `?page=&per_page=`, `?fields=`, `?sort=`, `?created_after=&created_before=` |
 | 🛡️ **Safe writes** | any `POST` | `Idempotency-Key` replay, ignored-unknown-fields on `PUT`, `X-RateLimit-*` headers |
-| 📐 **OpenAPI 3.1 spec** | `GET /api/openapi` | The whole surface as one machine-readable document — **72 paths, 139 operations** — import into Postman, Insomnia or Stoplight in seconds ([`openapi/`](openapi/)) |
+| 📐 **OpenAPI 3.0 spec** | `GET /api/openapi` | The whole surface as one machine-readable document - **72 paths, 139 operations** - import into Postman, Insomnia or Stoplight in seconds ([reference copy in `openapi/`](openapi/)) |
 
 > Everything is **opt-in** and backwards-compatible: requests without the new parameters return the exact
 > same response as before.
