@@ -45,6 +45,7 @@ endpoint catalogue.
 | 🗒️ **Notes** | `/api/notes` | Polymorphic notes across 12 entity types |
 | 📄 **Smarter lists** | any list endpoint | Opt-in `?page=&per_page=`, `?fields=`, `?sort=`, `?created_after=&created_before=` |
 | 🛡️ **Safe writes** | any `POST` | `Idempotency-Key` replay, ignored-unknown-fields on `PUT`, `X-RateLimit-*` headers |
+| 📐 **OpenAPI 3.1 spec** | `GET /api/openapi` | The whole surface as one machine-readable document — **72 paths, 139 operations** — import into Postman, Insomnia or Stoplight in seconds ([`openapi/`](openapi/)) |
 
 > Everything is **opt-in** and backwards-compatible: requests without the new parameters return the exact
 > same response as before.
