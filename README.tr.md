@@ -13,7 +13,7 @@
 > **Perfex CRM'i yapay zeka ajanları ve üçüncü taraf uygulamalarla bağlamanın** en hızlı yolu.
 
 [![Postman](https://img.shields.io/badge/Postman-Collection-orange?logo=postman&logoColor=white)](postman/perfex-rest-api.postman_collection.json)
-[![OpenAPI 3.1](https://img.shields.io/badge/OpenAPI-3.1-6ba539?logo=openapiinitiative&logoColor=white)](https://perfexcrm.themesic.com/apiguide/)
+[![OpenAPI 3.0](https://img.shields.io/badge/OpenAPI-3.0-6ba539?logo=openapiinitiative&logoColor=white)](https://perfexcrm.themesic.com/apiguide/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Perfex CRM](https://img.shields.io/badge/Perfex%20CRM-REST%20API-2c7be5)](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/)
 
@@ -28,7 +28,7 @@ uç nokta kataloğu.
 
 - 🧩 **Modülü edinin:** https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/
 - 📖 **API kılavuzu / canlı dokümantasyon:** https://perfexcrm.themesic.com/apiguide/
-- 🧾 **OpenAPI 3.1 şeması:** `GET https://yourdomain.com/api/openapi.json`
+- 🧾 **OpenAPI 3.0 şeması:** `GET https://yourdomain.com/api/openapi`
 
 ---
 
