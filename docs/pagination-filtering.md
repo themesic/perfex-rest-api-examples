@@ -43,6 +43,23 @@ The `meta` object contains:
 | `current_page` | Alias of `page` |
 | `last_page` | Alias of `total_pages` |
 
+`per_page` accepts 1 to 100 and defaults to 25.
+
+### A note on `?limit=`
+
+`limit` is **not** the parameter that sizes a page. It is accepted as an alias for
+`per_page` only when `page` is sent as well:
+
+| Request | Result |
+| --- | --- |
+| `?page=1&per_page=5` | 5 rows, `{ data, meta }` envelope |
+| `?page=1&limit=5` | 5 rows (alias accepted, because `page` is present) |
+| `?limit=5` | **Not paginated.** Legacy array; `limit` keeps its older meaning |
+
+This is deliberate: integrations written against 2.x already sent `?limit=` for a different
+purpose, and treating a bare `limit` as a page size would silently change their results. Use
+`?page=1&per_page=5` whenever you want a fixed number of rows back.
+
 ## 3. Field selection — `?fields=`
 
 Return only the columns you need with a comma-separated `fields` list. This shrinks payloads and

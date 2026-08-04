@@ -60,7 +60,7 @@ endpoint catalogue.
 | [`snippets/php/`](snippets/php/) | PHP (cURL) examples |
 | [`snippets/python/`](snippets/python/) | Python (`requests`) examples |
 | [`snippets/javascript/`](snippets/javascript/) | JavaScript / Node (`fetch`) examples |
-| [`docs/`](docs/) | Authentication, pagination & filtering, webhooks, MCP, automation, errors & status codes |
+| [`docs/`](docs/) | Authentication, pagination & filtering, webhooks, MCP, automation, custom tables, errors & status codes |
 
 Each snippet language has examples for **customers, invoices, leads** plus the v3 features
 **webhooks, mcp, batch, automation, knowledge_base and notes**, and a **list_features** file showing
@@ -161,8 +161,32 @@ curl -H "authtoken: YOUR_API_TOKEN" \
 | `sort` | `?sort=-datecreated,company` | Sort (`-` = descending) |
 | `created_after`, `created_before` | `?created_after=2026-01-01` | Date-range filter |
 
+> `per_page` is the parameter that sizes a page (1-100, default 25). `limit` is accepted as an
+> alias **only** when `page` is sent too, so a bare `?limit=5` does not paginate - use
+> `?page=1&per_page=5`.
+
 See [`docs/pagination-filtering.md`](docs/pagination-filtering.md) and
 [`snippets/curl/list_features.sh`](snippets/curl/list_features.sh).
+
+---
+
+## Upgrading from 2.x
+
+**There are no breaking changes.** Every v3 list feature is opt-in:
+
+- Send none of the parameters above and you get the same plain array 2.x returned. The
+  `{ data, meta }` envelope appears **only** when you send `page` or `per_page`.
+- **No endpoint was renamed.** Customers have always been at `/api/customers`.
+- Unknown fields on `PUT` are ignored instead of returning an error.
+- `POST` requests accept an optional `Idempotency-Key` header; identical retries replay the stored
+  response rather than creating duplicates.
+
+Two things worth knowing when adopting v3:
+
+- Custom tables moved behind an allowlist in 3.0.2 - see
+  [`docs/custom-tables.md`](docs/custom-tables.md).
+- New permission rows (Webhooks, Notes, Knowledge Base) must be ticked on existing tokens before
+  those endpoints answer, and before their MCP tools appear in `tools/list`.
 
 ---
 
