@@ -35,10 +35,29 @@ The allowlist is **empty by default**, so a fresh install exposes nothing. A bui
 additionally blocks core tables regardless of the allowlist: staff, options, roles, the API's own
 token and permission tables, migrations, sessions and similar.
 
-If you granted the `thirdparty` permission before 3.0.2, review those tokens now and add only the
-tables each integration genuinely needs.
+## 3. Grant tables per token (v3.1.0)
 
-## 3. Examples
+The allowlist decides which tables *may* be exposed at all. From **v3.1.0** each token is then
+granted individual tables, so one integration's needs no longer widen every other integration's
+reach.
+
+Open the token under **API > API Management** and you will find one row per allowlisted table,
+with two capabilities:
+
+| Capability | Allows |
+| --- | --- |
+| **Read** | `GET` (list and single row) |
+| **Write** | `POST`, `PUT`, `DELETE` |
+
+Grant **Read** only and the token cannot modify anything in that table, which is what reporting and
+reconciliation integrations usually want. Both layers must agree: a table missing from the
+allowlist stays unreachable no matter what a token is granted.
+
+> **Upgrading from 3.0.x:** nothing breaks. Tokens holding the old blanket `thirdparty` permission
+> are granted every currently-allowlisted table automatically, with write only where they already
+> had it. Narrowing them down is then something you do deliberately, token by token.
+
+## 4. Examples
 
 List every row:
 
@@ -82,7 +101,7 @@ curl -X DELETE -H "authtoken: YOUR_API_TOKEN" \
   "https://yourdomain.com/api/thirdparty/customtable/tblmy_module_data/42"
 ```
 
-## 4. Common responses
+## 5. Common responses
 
 | Status | Meaning |
 | --- | --- |

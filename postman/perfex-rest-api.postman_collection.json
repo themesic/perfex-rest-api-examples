@@ -46059,6 +46059,6 @@
   "info": {
     "name": "Perfex CRM REST API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Generated from the module's OpenAPI document (v3.0.3). Set the base_url and authtoken collection variables, then send any request. Regenerate with: node tools/generate-postman.mjs"
+    "description": "Generated from the module's OpenAPI document (v3.1.0). Set the base_url and authtoken collection variables, then send any request. Regenerate with: node tools/generate-postman.mjs"
   }
 }
