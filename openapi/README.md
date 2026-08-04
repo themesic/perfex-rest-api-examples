@@ -1,6 +1,6 @@
 # OpenAPI 3.0 specification
 
-The REST API module describes its **entire surface - 72 paths, 139 operations -**
+The REST API module describes its **entire surface - 74 paths, 144 operations -**
 as a machine-readable OpenAPI 3.0 document, generated live by the module itself
 so it always matches the installed version.
 
