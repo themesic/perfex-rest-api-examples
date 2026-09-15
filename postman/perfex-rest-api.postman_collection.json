@@ -28953,6 +28953,551 @@
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           }
+        },
+        {
+          "name": "Read a ticket's conversation",
+          "request": {
+            "name": "Read a ticket's conversation",
+            "description": {
+              "content": "The ticket record itself carries only the opening message and the lastreply timestamp, so this is the endpoint to call to read what was actually said. Each reply includes its author, body, date and attachments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tickets",
+                ":id",
+                "replies"
+              ],
+              "host": [
+                "{{base_url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "authtoken",
+                "value": "{{authtoken}}",
+                "type": "text"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "name": "Plain array (legacy) or {data, meta} envelope when pagination params are sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":id",
+                    "replies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"<object>\",\n  \"<object>\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "No data found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":id",
+                    "replies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "Invalid filters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    ":id",
+                    "replies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"errors\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "name": "Add a reply to a ticket",
+          "request": {
+            "name": "Add a reply to a ticket",
+            "description": {},
+            "url": {
+              "path": [
+                "tickets",
+                "reply",
+                ":id"
+              ],
+              "host": [
+                "{{base_url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "authtoken",
+                "value": "{{authtoken}}",
+                "type": "text"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "message",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "(Required) Mandatory Reply message."
+                },
+                {
+                  "key": "admin",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Optional Staff ID (if provided, reply is from staff member)."
+                },
+                {
+                  "key": "status",
+                  "value": "<integer>",
+                  "type": "text",
+                  "description": "Optional Ticket status after reply (default: 1 for customer, 3 for staff)."
+                },
+                {
+                  "key": "cc",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional CC email addresses."
+                },
+                {
+                  "key": "file",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional File attachments."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Success (record_id included on create)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    "reply",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Mandatory Reply message.",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional Staff ID (if provided, reply is from staff member).",
+                        "type": "text/plain"
+                      },
+                      "key": "admin",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional Ticket status after reply (default: 1 for customer, 3 for staff).",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional CC email addresses.",
+                        "type": "text/plain"
+                      },
+                      "key": "cc",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional File attachments.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"<object>\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    "reply",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Mandatory Reply message.",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional Staff ID (if provided, reply is from staff member).",
+                        "type": "text/plain"
+                      },
+                      "key": "admin",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional Ticket status after reply (default: 1 for customer, 3 for staff).",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional CC email addresses.",
+                        "type": "text/plain"
+                      },
+                      "key": "cc",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional File attachments.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"<boolean>\",\n  \"message\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tickets",
+                    "reply",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) Mandatory Reply message.",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional Staff ID (if provided, reply is from staff member).",
+                        "type": "text/plain"
+                      },
+                      "key": "admin",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional Ticket status after reply (default: 1 for customer, 3 for staff).",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional CC email addresses.",
+                        "type": "text/plain"
+                      },
+                      "key": "cc",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional File attachments.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"<boolean>\",\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"errors\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
         }
       ],
       "event": []

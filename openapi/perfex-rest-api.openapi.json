@@ -3,7 +3,7 @@
     "info": {
         "title": "Perfex CRM REST API",
         "version": "3.1.0",
-        "x-build": "2026-09-15 0813",
+        "x-build": "2026-09-15 0825",
         "description": "REST API for Perfex CRM by Themesic Interactive. Authenticate every request with the authtoken header. Lists support page/per_page pagination, sort, fields selection and date-range filters. An MCP server for AI agents is available at POST /api/mcp.",
         "contact": {
             "url": "https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/"
@@ -13171,6 +13171,193 @@
                     "Tasks"
                 ],
                 "summary": "Delete a task comment",
+                "responses": {
+                    "200": {
+                        "description": "Success (record_id included on create)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tickets/{id}/replies": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    }
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Read a ticket's conversation",
+                "description": "The ticket record itself carries only the opening message and the lastreply timestamp, so this is the endpoint to call to read what was actually said. Each reply includes its author, body, date and attachments.",
+                "responses": {
+                    "200": {
+                        "description": "Plain array (legacy) or {data, meta} envelope when pagination params are sent",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "$ref": "#/components/schemas/ListMeta"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Invalid filters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tickets/reply/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "integer"
+                    }
+                }
+            ],
+            "post": {
+                "tags": [
+                    "Tickets"
+                ],
+                "summary": "Add a reply to a ticket",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "message": {
+                                        "type": "string",
+                                        "description": "Mandatory Reply message."
+                                    },
+                                    "admin": {
+                                        "type": "integer",
+                                        "description": "Optional Staff ID (if provided, reply is from staff member)."
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "description": "Optional Ticket status after reply (default: 1 for customer, 3 for staff)."
+                                    },
+                                    "cc": {
+                                        "type": "string",
+                                        "description": "Optional CC email addresses."
+                                    },
+                                    "file": {
+                                        "type": "string",
+                                        "description": "Optional File attachments."
+                                    }
+                                },
+                                "required": [
+                                    "message"
+                                ]
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "message": {
+                                        "type": "string",
+                                        "description": "Mandatory Reply message."
+                                    },
+                                    "admin": {
+                                        "type": "integer",
+                                        "description": "Optional Staff ID (if provided, reply is from staff member)."
+                                    },
+                                    "status": {
+                                        "type": "integer",
+                                        "description": "Optional Ticket status after reply (default: 1 for customer, 3 for staff)."
+                                    },
+                                    "cc": {
+                                        "type": "string",
+                                        "description": "Optional CC email addresses."
+                                    },
+                                    "file": {
+                                        "type": "string",
+                                        "description": "Optional File attachments."
+                                    }
+                                },
+                                "required": [
+                                    "message"
+                                ]
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Success (record_id included on create)",
