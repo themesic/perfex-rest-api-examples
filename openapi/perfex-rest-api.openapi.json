@@ -3,7 +3,7 @@
     "info": {
         "title": "Perfex CRM REST API",
         "version": "3.1.1",
-        "x-build": "2026-09-30 1147",
+        "x-build": "2026-10-01 0820",
         "description": "REST API for Perfex CRM by Themesic Interactive. Authenticate every request with the authtoken header. Lists support page/per_page pagination, sort, fields selection and date-range filters. An MCP server for AI agents is available at POST /api/mcp.",
         "contact": {
             "url": "https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/"
@@ -13701,7 +13701,7 @@
             "bearerAuth": {
                 "type": "http",
                 "scheme": "bearer",
-                "description": "The same API token sent as \"Authorization: Bearer YOUR_API_TOKEN\". Use this when the client cannot set a custom header."
+                "description": "The same API token sent as \"Authorization: Bearer YOUR_API_TOKEN\". The \"Bearer \" prefix is optional. Use this when the client cannot set a custom header. Note for self-hosted servers: Apache running PHP as CGI/FastCGI/PHP-FPM drops the Authorization header before PHP sees it unless the vhost or .htaccess forwards it - add \"CGIPassAuth On\", or the rewrite RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]. The authtoken header needs no such configuration."
             }
         },
         "parameters": {
