@@ -2,8 +2,8 @@
     "openapi": "3.0.3",
     "info": {
         "title": "Perfex CRM REST API",
-        "version": "3.1.1",
-        "x-build": "2026-10-01 0820",
+        "version": "3.1.2",
+        "x-build": "2026-10-02 1148",
         "description": "REST API for Perfex CRM by Themesic Interactive. Authenticate every request with the authtoken header. Lists support page/per_page pagination, sort, fields selection and date-range filters. An MCP server for AI agents is available at POST /api/mcp.",
         "contact": {
             "url": "https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/"
@@ -5617,7 +5617,7 @@
                                     },
                                     "rel_type": {
                                         "type": "string",
-                                        "description": "Mandatory Project Related."
+                                        "description": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect."
                                     },
                                     "clientid": {
                                         "type": "integer",
@@ -5679,7 +5679,6 @@
                                 },
                                 "required": [
                                     "name",
-                                    "rel_type",
                                     "clientid",
                                     "billing_type",
                                     "start_date",
@@ -5697,7 +5696,7 @@
                                     },
                                     "rel_type": {
                                         "type": "string",
-                                        "description": "Mandatory Project Related."
+                                        "description": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect."
                                     },
                                     "clientid": {
                                         "type": "integer",
@@ -5759,7 +5758,6 @@
                                 },
                                 "required": [
                                     "name",
-                                    "rel_type",
                                     "clientid",
                                     "billing_type",
                                     "start_date",
@@ -5860,7 +5858,7 @@
                                     },
                                     "rel_type": {
                                         "type": "string",
-                                        "description": "Mandatory Project Related."
+                                        "description": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect."
                                     },
                                     "clientid": {
                                         "type": "integer",
@@ -5922,7 +5920,6 @@
                                 },
                                 "required": [
                                     "name",
-                                    "rel_type",
                                     "clientid",
                                     "billing_type",
                                     "start_date",
@@ -5940,7 +5937,7 @@
                                     },
                                     "rel_type": {
                                         "type": "string",
-                                        "description": "Mandatory Project Related."
+                                        "description": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect."
                                     },
                                     "clientid": {
                                         "type": "integer",
@@ -6002,7 +5999,6 @@
                                 },
                                 "required": [
                                     "name",
-                                    "rel_type",
                                     "clientid",
                                     "billing_type",
                                     "start_date",

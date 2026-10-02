@@ -19338,12 +19338,6 @@
                   "description": "(Required) Mandatory Project Name."
                 },
                 {
-                  "key": "rel_type",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "(Required) Mandatory Project Related."
-                },
-                {
                   "key": "clientid",
                   "value": "<integer>",
                   "type": "text",
@@ -19366,6 +19360,12 @@
                   "value": "<integer>",
                   "type": "text",
                   "description": "(Required) Mandatory Project Status."
+                },
+                {
+                  "key": "rel_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect."
                 },
                 {
                   "key": "progress_from_tasks",
@@ -19459,15 +19459,6 @@
                     },
                     {
                       "description": {
-                        "content": "(Required) Mandatory Project Related.",
-                        "type": "text/plain"
-                      },
-                      "key": "rel_type",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
                         "content": "(Required) Mandatory Related ID.",
                         "type": "text/plain"
                       },
@@ -19500,6 +19491,15 @@
                       },
                       "key": "status",
                       "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect.",
+                        "type": "text/plain"
+                      },
+                      "key": "rel_type",
+                      "value": "<string>",
                       "type": "text"
                     },
                     {
@@ -19632,15 +19632,6 @@
                     },
                     {
                       "description": {
-                        "content": "(Required) Mandatory Project Related.",
-                        "type": "text/plain"
-                      },
-                      "key": "rel_type",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
                         "content": "(Required) Mandatory Related ID.",
                         "type": "text/plain"
                       },
@@ -19673,6 +19664,15 @@
                       },
                       "key": "status",
                       "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect.",
+                        "type": "text/plain"
+                      },
+                      "key": "rel_type",
+                      "value": "<string>",
                       "type": "text"
                     },
                     {
@@ -19805,15 +19805,6 @@
                     },
                     {
                       "description": {
-                        "content": "(Required) Mandatory Project Related.",
-                        "type": "text/plain"
-                      },
-                      "key": "rel_type",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
                         "content": "(Required) Mandatory Related ID.",
                         "type": "text/plain"
                       },
@@ -19846,6 +19837,15 @@
                       },
                       "key": "status",
                       "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect.",
+                        "type": "text/plain"
+                      },
+                      "key": "rel_type",
+                      "value": "<string>",
                       "type": "text"
                     },
                     {
@@ -20132,12 +20132,6 @@
                   "description": "(Required) Mandatory Project Name."
                 },
                 {
-                  "key": "rel_type",
-                  "value": "<string>",
-                  "type": "text",
-                  "description": "(Required) Mandatory Project Related."
-                },
-                {
                   "key": "clientid",
                   "value": "<integer>",
                   "type": "text",
@@ -20160,6 +20154,12 @@
                   "value": "<integer>",
                   "type": "text",
                   "description": "(Required) Mandatory Project Status."
+                },
+                {
+                  "key": "rel_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect."
                 },
                 {
                   "key": "progress_from_tasks",
@@ -20262,15 +20262,6 @@
                     },
                     {
                       "description": {
-                        "content": "(Required) Mandatory Project Related.",
-                        "type": "text/plain"
-                      },
-                      "key": "rel_type",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
                         "content": "(Required) Mandatory Related ID.",
                         "type": "text/plain"
                       },
@@ -20303,6 +20294,15 @@
                       },
                       "key": "status",
                       "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect.",
+                        "type": "text/plain"
+                      },
+                      "key": "rel_type",
+                      "value": "<string>",
                       "type": "text"
                     },
                     {
@@ -20444,15 +20444,6 @@
                     },
                     {
                       "description": {
-                        "content": "(Required) Mandatory Project Related.",
-                        "type": "text/plain"
-                      },
-                      "key": "rel_type",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
                         "content": "(Required) Mandatory Related ID.",
                         "type": "text/plain"
                       },
@@ -20485,6 +20476,15 @@
                       },
                       "key": "status",
                       "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect.",
+                        "type": "text/plain"
+                      },
+                      "key": "rel_type",
+                      "value": "<string>",
                       "type": "text"
                     },
                     {
@@ -20626,15 +20626,6 @@
                     },
                     {
                       "description": {
-                        "content": "(Required) Mandatory Project Related.",
-                        "type": "text/plain"
-                      },
-                      "key": "rel_type",
-                      "value": "<string>",
-                      "type": "text"
-                    },
-                    {
-                      "description": {
                         "content": "(Required) Mandatory Related ID.",
                         "type": "text/plain"
                       },
@@ -20667,6 +20658,15 @@
                       },
                       "key": "status",
                       "value": "<integer>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional and ignored - a project relates to a customer through clientid, not rel_type. Kept only for backward compatibility; sending it has no effect.",
+                        "type": "text/plain"
+                      },
+                      "key": "rel_type",
+                      "value": "<string>",
                       "type": "text"
                     },
                     {
@@ -48900,6 +48900,6 @@
   "info": {
     "name": "Perfex CRM REST API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Generated from the module's OpenAPI document (v3.1.1). Set the base_url and authtoken collection variables, then send any request. Regenerate with: node tools/generate-postman.mjs"
+    "description": "Generated from the module's OpenAPI document (v3.1.2). Set the base_url and authtoken collection variables, then send any request. Regenerate with: node tools/generate-postman.mjs"
   }
 }
