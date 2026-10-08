@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "perfex-crm": {
+    "themesic-perfex-mcp": {
       "type": "http",
       "url": "https://perfex-mcp.themesic.com/mcp"
     }

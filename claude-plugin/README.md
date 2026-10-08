@@ -21,7 +21,7 @@ The plugin has no hooks, scripts or local programs. It does not run anything on 
 2. **Enable the MCP server.** In your Perfex admin, go to Setup > API > Settings and turn on the MCP server.
 3. **Create an API token.** Go to Setup > API > API Management, create a token for Claude, and give it only the permissions Claude should have (see [Permissions](#permissions-and-safety)).
 4. **Install the plugin** in Claude from the directory.
-5. **Connect.** Open the plugin's **Connectors** tab (claude.ai and Cowork) or run `/mcp` (Claude Code) and connect **perfex-crm**. You are sent to the Themesic sign-in page.
+5. **Connect.** Open the plugin's **Connectors** tab (claude.ai and Cowork) or run `/mcp` (Claude Code) and connect **themesic-perfex-mcp**. You are sent to the Themesic sign-in page.
 6. **Sign in.** Enter your Perfex CRM URL (for example `https://crm.yourcompany.com`) and the API token from step 3, then approve access. Claude can now use the tools your token allows.
 
 On Team and Enterprise plans, an Owner adds the connector for the organization, and each member then connects with their own CRM URL and token.
