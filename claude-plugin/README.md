@@ -45,6 +45,11 @@ Claude searches before it creates records, asks you to pick when several records
 - **Deletes are permanent** in Perfex. Claude is instructed to confirm every delete with you, but a read-only token is the strongest protection.
 - You can revoke Claude's access at any time by deleting the token in Setup > API > API Management or by disconnecting the connector in Claude.
 
+## Other assistants
+
+The same connector URL works in ChatGPT, Cursor, VS Code and any MCP client. See the
+[setup guide](../docs/connect-ai-assistants.md).
+
 ## Privacy Policy
 
 Full policy: https://perfex-mcp.themesic.com/privacy

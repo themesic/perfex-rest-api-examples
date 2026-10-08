@@ -96,7 +96,10 @@ Point any MCP client (Claude Desktop, Cursor, ChatGPT, n8n AI Agent) at `POST ht
 and send your `authtoken` header. The server advertises permission-filtered tools for your CRM. See
 [`docs/mcp.md`](docs/mcp.md) and [`snippets/curl/mcp.sh`](snippets/curl/mcp.sh).
 
-### Use with Claude
+### Use with Claude, ChatGPT and other AI assistants
+
+Connect any assistant with one URL, `https://perfex-mcp.themesic.com/mcp`. Step-by-step setup for Claude, ChatGPT,
+Cursor and VS Code: [`docs/connect-ai-assistants.md`](docs/connect-ai-assistants.md).
 
 A Claude plugin (connector + skills) for claude.ai, Cowork and Claude Code lives in
 [`claude-plugin/`](claude-plugin/). It requires the REST API module with a valid license and the MCP
