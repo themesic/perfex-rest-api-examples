@@ -1,0 +1,28 @@
+{
+  "name": "perfex-crm",
+  "displayName": "REST API for Perfex CRM",
+  "version": "1.0.0",
+  "description": "Requires the paid REST API for Perfex CRM module by Themesic Interactive, installed on your CRM with a valid license for its domain; without it this plugin gives no access. Lets Claude search, read, create and update customers, contacts, leads, invoices, estimates, proposals, projects, tasks, tickets, expenses and more in your own Perfex CRM through permission-filtered MCP tools.",
+  "author": {
+    "name": "Themesic Interactive",
+    "email": "support@themesic.com",
+    "url": "https://themesic.com"
+  },
+  "homepage": "https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/",
+  "repository": "https://github.com/themesic/perfex-rest-api-examples",
+  "license": "MIT",
+  "keywords": [
+    "perfex",
+    "perfex-crm",
+    "crm",
+    "invoices",
+    "leads",
+    "projects",
+    "tickets",
+    "mcp"
+  ],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://perfexcrm.themesic.com/apiguide/",
+  "supportUrl": "https://themesic.com/support",
+  "privacyPolicyUrl": "https://perfex-mcp.themesic.com/privacy"
+}

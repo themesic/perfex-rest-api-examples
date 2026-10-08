@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "perfex-crm": {
+      "type": "http",
+      "url": "https://perfex-mcp.themesic.com/mcp"
+    }
+  }
+}
