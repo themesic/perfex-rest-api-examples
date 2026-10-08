@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "perfex": {
+      "type": "streamable-http",
+      "url": "https://perfex-mcp.themesic.com/mcp"
+    }
+  }
+}
