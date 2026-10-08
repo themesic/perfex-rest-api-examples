@@ -102,7 +102,7 @@
         },
         "demo_recording_url": "REPLACE_WITH_VIDEO_URL",
         "commerce": false,
-        "commerce_description": "This plugin does not sell products or process payments. It reads and updates records in the user's own Perfex CRM."
+        "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
         "release_notes": "1.0.0: First release for ChatGPT. Connects ChatGPT to your own self-hosted Perfex CRM through the MCP server of the REST API for Perfex CRM module: permission-filtered tools to search, read, create and update customers, contacts, leads, invoices, estimates, proposals, credit notes, payments, projects, tasks, tickets, contracts, expenses and more. OAuth sign-in with the CRM address and an API token; tools that delete, overwrite or may email customers are annotated so ChatGPT asks for confirmation."
