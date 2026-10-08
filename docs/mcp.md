@@ -89,14 +89,18 @@ curl -X POST "https://yourdomain.com/api/mcp" \
   "result": {
     "tools": [
       {
-        "name": "list_customers",
-        "description": "List customers with optional filters",
-        "inputSchema": { "type": "object", "properties": {} }
+        "name": "customers_list",
+        "title": "List customers",
+        "description": "List customers. Supports limit/offset and optional date range.",
+        "inputSchema": { "type": "object", "properties": {} },
+        "annotations": { "title": "List customers", "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
       },
       {
-        "name": "create_invoice",
-        "description": "Create an invoice for a customer",
-        "inputSchema": { "type": "object", "properties": {} }
+        "name": "invoices_create",
+        "title": "Create invoice",
+        "description": "Create a invoice. Pass the record fields as the \"data\" object (same field names as the REST API).",
+        "inputSchema": { "type": "object", "properties": {} },
+        "annotations": { "title": "Create invoice", "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
       }
     ]
   }
@@ -114,8 +118,8 @@ curl -X POST "https://yourdomain.com/api/mcp" \
     "id": 3,
     "method": "tools/call",
     "params": {
-      "name": "list_customers",
-      "arguments": { "per_page": 5 }
+      "name": "customers_list",
+      "arguments": { "limit": 5 }
     }
   }'
 ```
