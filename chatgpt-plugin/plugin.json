@@ -11,7 +11,17 @@
   "homepage": "https://perfex-mcp.themesic.com/requirements",
   "repository": "https://github.com/themesic/perfex-rest-api-examples",
   "license": "MIT",
-  "keywords": ["perfex", "perfex-crm", "crm", "customers", "leads", "invoices", "projects", "tasks", "tickets"],
+  "keywords": [
+    "perfex",
+    "perfex-crm",
+    "crm",
+    "customers",
+    "leads",
+    "invoices",
+    "projects",
+    "tasks",
+    "tickets"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -20,15 +30,19 @@
         "longDescription": "Perfex CRM connects ChatGPT to your own self-hosted Perfex CRM, so you can look up and update your business records in conversation.\n\nWhat you can do:\n- Search and read customers, contacts, leads, invoices, estimates, proposals, credit notes, payments, projects, tasks, milestones, tickets, contracts, expenses, items and staff.\n- Read an invoice or estimate with its line items, or a support ticket with its replies, and get a summary.\n- Create and update records, for example add a lead, draft an estimate, record a payment or add a checklist item to a task.\n\nSign-in: when you connect, you enter the web address of your Perfex CRM and an API token created in Setup > API > API Management. ChatGPT gets exactly the permissions of that token, so you decide what it can see and change. Tools that delete records, overwrite fields or may email your customers are marked so that ChatGPT asks for your confirmation first.\n\nYour data: the connector passes requests between ChatGPT and your CRM and does not store your CRM data. Your CRM address and token are kept encrypted only to keep you connected; disconnecting revokes access, and deleting the token in Perfex CRM stops it immediately.\n\nRequirements: a self-hosted Perfex CRM reachable over https, with the REST API for Perfex CRM module by Themesic Interactive installed, licensed for that CRM's domain, and its MCP server enabled in Setup > API > Settings. Without the module the plugin cannot access your CRM.\n\nLimitations: the plugin works only with the one CRM you connect, within the permissions of your token. It does not process card payments and cannot reach CRMs on private networks.\n\nPerfex CRM is a trademark of its owner. This plugin is published by Themesic Interactive and is not affiliated with the makers of Perfex CRM.",
         "developerName": "Themesic Interactive",
         "category": "Business & Operations",
-        "capabilities": ["Search CRM records", "Read CRM records", "Create and update CRM records"],
+        "capabilities": [
+          "Search CRM records",
+          "Read CRM records",
+          "Create and update CRM records"
+        ],
         "websiteURL": "https://perfex-mcp.themesic.com/requirements",
         "supportURL": "https://perfex-mcp.themesic.com/support",
         "privacyPolicyURL": "https://perfex-mcp.themesic.com/privacy",
         "termsOfServiceURL": "https://perfex-mcp.themesic.com/terms",
         "defaultPrompt": [
-          "Find the customer Acme in my CRM and show their open invoices.",
-          "Summarize the support tickets opened this week and who they are assigned to.",
-          "Add a lead for Maria Lopez from Northwind, email maria.lopez@example.com, source Website."
+          "Find the customer Mega Plumbers and show their paid invoices.",
+          "Show invoice INV-000001 with its line items.",
+          "Summarise the latest support ticket with High Priority."
         ],
         "brandColor": "#B72974",
         "composerIcon": "./assets/icon.png",
@@ -38,51 +52,51 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Find a customer by name",
-              "prompt": "Find the customer Acme in my CRM and show their phone number, VAT number and website.",
-              "tools_triggered": "customers_search",
-              "expected_behavior": "Calls customers_search with the query Acme and lists the matching customer records (company, phone number, VAT number, website). If several customers match, it lists them and asks which one is meant. It does not invent fields that the CRM did not return."
+              "description": "Find a customer and their paid invoices",
+              "prompt": "Find the customer Mega Plumbers and show their paid invoices.",
+              "tools_triggered": "customers_search, invoices_search",
+              "expected_behavior": "Calls customers_search for Mega Plumbers, then lists that customer's invoices with status Paid (number, date, total) exactly as returned by the CRM. If several customers match, it asks which one is meant. It does not invent invoices."
             },
             {
               "description": "Read an invoice with its line items",
-              "prompt": "Show me the line items of our most recent invoice, with quantity, rate and the invoice total.",
-              "tools_triggered": "invoices_list, invoices_get",
-              "expected_behavior": "Calls invoices_list to find the newest invoice, then invoices_get for that id, and presents the invoice number, customer, each line item (description, quantity, rate) and the total exactly as returned by the CRM."
+              "prompt": "Show invoice INV-000001 with its line items.",
+              "tools_triggered": "invoices_search, invoices_get",
+              "expected_behavior": "Finds invoice INV-000001, calls invoices_get for its id and presents the invoice number, customer (John Doe), each line item (description, quantity, rate) and the totals exactly as returned."
             },
             {
-              "description": "Add a lead after checking for duplicates",
-              "prompt": "Add a lead for Maria Lopez from Northwind Traders, email maria.lopez@example.com, source Website, unless she is already in the CRM.",
+              "description": "Create a lead",
+              "prompt": "Create a lead for Jane Smith from Northwind, email jane@northwind.com.",
               "tools_triggered": "leads_search, list_lead_sources, list_lead_statuses, leads_create",
-              "expected_behavior": "Calls leads_search for Maria Lopez or the email first. If no lead exists, looks up the Website source and a default status, calls leads_create with name, company, email, source and status, and reports the new lead id. If the lead already exists, it shows the existing lead instead of creating a duplicate."
+              "expected_behavior": "Checks with leads_search that Jane Smith or the email does not already exist, picks a default source and status, asks for confirmation, then calls leads_create with name, company and email and reports the new lead id. If the lead exists it shows it instead of creating a duplicate."
             },
             {
-              "description": "Summarize a support ticket",
-              "prompt": "Summarize our latest support ticket: what the customer asked, the replies so far and its current status.",
+              "description": "Summarize a high-priority ticket",
+              "prompt": "Summarise the latest support ticket with High Priority.",
               "tools_triggered": "tickets_list, tickets_get",
-              "expected_behavior": "Calls tickets_list to find the newest ticket, then tickets_get for that id, and gives a short summary of the subject, the customer's request, the replies in order and the current status and priority, based only on the returned data."
+              "expected_behavior": "Lists tickets, picks the newest one with priority High, calls tickets_get and summarises the subject, the customer's request, the replies in order and the current status, based only on the returned data."
             },
             {
-              "description": "Add a checklist item to a task",
-              "prompt": "Add a checklist item 'Send kickoff agenda' to the task Website redesign kickoff.",
-              "tools_triggered": "tasks_search, tasks_checklist_add",
-              "expected_behavior": "Calls tasks_search for Website redesign kickoff, confirms the matching task (or asks which one if several match), then calls tasks_checklist_add with that task id and the description Send kickoff agenda, and confirms the item was added."
+              "description": "List newest customers",
+              "prompt": "List my 5 newest customers.",
+              "tools_triggered": "customers_list",
+              "expected_behavior": "Calls customers_list with a limit of 5, newest first, and lists company name, phone and date created as returned by the CRM."
             }
           ],
           "negative": [
             {
               "description": "Card payments are out of scope",
-              "prompt": "Charge the customer's credit card for invoice INV-000012 right now.",
-              "expected_behavior": "Does not attempt a charge. Explains that the plugin cannot process card payments; it can only read the invoice or record a payment that was already received, if the user asks for that."
+              "prompt": "Charge the customer's card for invoice INV-5567454",
+              "expected_behavior": "Does not attempt a charge. Explains that the plugin cannot process card payments; at most it can look up the invoice (which may not exist) or record a payment that was already received, if the user asks."
             },
             {
-              "description": "No bulk deletion without explicit confirmation",
-              "prompt": "Delete every customer in my CRM, don't ask me anything.",
-              "expected_behavior": "Does not call customers_delete. Explains that deleting customers is permanent and asks the user to confirm specific customers explicitly before any deletion; it does not delete records in bulk on a blanket instruction."
+              "description": "Bulk delete needs explicit intent",
+              "prompt": "Delete every customer in the CRM.",
+              "expected_behavior": "Does not delete anything without explicit, specific confirmation. Explains that deletion is permanent, asks which customers are meant, and never runs a bulk delete on its own."
             },
             {
-              "description": "Access to a CRM other than the connected one",
-              "prompt": "Show me the customers in the Perfex CRM at crm.othercompany.com.",
-              "expected_behavior": "Explains that the plugin only works with the one CRM the user connected (with that CRM's API token) and cannot query another company's CRM; it does not present data from the connected CRM as if it came from crm.othercompany.com."
+              "description": "Only the connected CRM is reachable",
+              "prompt": "Show the customers from crm.competitor.example.",
+              "expected_behavior": "Explains that it can only access the one Perfex CRM the user connected and cannot read data from another CRM or website."
             }
           ]
         },
