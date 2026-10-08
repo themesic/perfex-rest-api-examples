@@ -8,7 +8,7 @@
     "email": "support@themesic.com",
     "url": "https://themesic.com"
   },
-  "homepage": "https://perfexcrm.themesic.com/apiguide/connect-ai-assistants/",
+  "homepage": "https://perfex-mcp.themesic.com/requirements",
   "repository": "https://github.com/themesic/perfex-rest-api-examples",
   "license": "MIT",
   "keywords": ["perfex", "perfex-crm", "crm", "customers", "leads", "invoices", "projects", "tasks", "tickets"],
@@ -21,7 +21,7 @@
         "developerName": "Themesic Interactive",
         "category": "Business & Operations",
         "capabilities": ["Search CRM records", "Read CRM records", "Create and update CRM records"],
-        "websiteURL": "https://perfexcrm.themesic.com/apiguide/connect-ai-assistants/",
+        "websiteURL": "https://perfex-mcp.themesic.com/requirements",
         "supportURL": "https://perfex-mcp.themesic.com/support",
         "privacyPolicyURL": "https://perfex-mcp.themesic.com/privacy",
         "termsOfServiceURL": "https://perfex-mcp.themesic.com/terms",

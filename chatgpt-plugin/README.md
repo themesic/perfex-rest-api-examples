@@ -152,7 +152,7 @@ metadata or asset changes need a new ZIP with a higher `version`.
 
 | Field | URL |
 | --- | --- |
-| Website | https://perfexcrm.themesic.com/apiguide/connect-ai-assistants/ |
+| Website | https://perfex-mcp.themesic.com/requirements |
 | Support | https://perfex-mcp.themesic.com/support |
 | Privacy policy | https://perfex-mcp.themesic.com/privacy |
 | Terms of service | https://perfex-mcp.themesic.com/terms |
