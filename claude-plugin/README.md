@@ -1,6 +1,6 @@
 # REST API for Perfex CRM - Claude plugin
 
-> **Requirement: this plugin only works if your Perfex CRM has the paid [REST API for Perfex CRM module](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/) by Themesic Interactive installed, with a valid license for your CRM's domain and its MCP server enabled. Without the module the connector gives no access to anything.**
+> **Requirement: this plugin only works if your Perfex CRM has the paid [REST API for Perfex CRM module](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/) by Themesic Interactive installed, with a valid license for your CRM's domain and its MCP server enabled. The hosted connector this plugin uses is a Pro feature: it requires a Pro license or an Extended License of the module. Without the module the connector gives no access to anything.**
 >
 > Buy the module: https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/
 
@@ -10,14 +10,14 @@ This plugin connects Claude to **your own** Perfex CRM. Claude can search, read,
 
 The plugin contains:
 
-- **The Perfex CRM connector**: a remote MCP server at `https://perfex-mcp.themesic.com/mcp` (OAuth sign-in) that forwards Claude's tool calls to the MCP endpoint of your CRM.
+- **The Perfex CRM connector**: a remote MCP server at `https://perfex-mcp.themesic.com/mcp` (OAuth sign-in) that forwards Claude's tool calls to the MCP endpoint of your CRM. The hosted connector requires a Pro license or an Extended License of the module.
 - **Two skills** that teach Claude to use the tools well: `perfex-crm` (finding records, avoiding duplicates, paging, confirming deletes, handling errors) and `perfex-sales-documents` (invoices, estimates, proposals, credit notes, payments and their line items).
 
 The plugin has no hooks, scripts or local programs. It does not run anything on your computer.
 
 ## Setup
 
-1. **Buy and install the module.** Purchase the [REST API for Perfex CRM module](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/), install it in Perfex under Setup > Modules, and activate your license for the CRM's domain.
+1. **Buy and install the module.** Purchase the [REST API for Perfex CRM module](https://themesic.com/product/rest-api-module-for-perfex-crm-connect-your-perfex-crm-with-third-party-applications/) with a **Pro license** (direct store) or an **Extended License** (CodeCanyon), install it in Perfex under Setup > Modules, and activate your license for the CRM's domain.
 2. **Enable the MCP server.** In your Perfex admin, go to Setup > API > Settings and turn on the MCP server.
 3. **Create an API token.** Go to Setup > API > API Management, create a token for Claude, and give it only the permissions Claude should have (see [Permissions](#permissions-and-safety)).
 4. **Install the plugin** in Claude from the directory.
@@ -44,6 +44,10 @@ Claude searches before it creates records, asks you to pick when several records
 - **Start with a read-only token.** For reporting and look-ups, create a token with only read (view) permissions. Add create, edit or delete permissions later, only for the areas you want Claude to change.
 - **Deletes are permanent** in Perfex. Claude is instructed to confirm every delete with you, but a read-only token is the strongest protection.
 - You can revoke Claude's access at any time by deleting the token in Setup > API > API Management or by disconnecting the connector in Claude.
+
+## Which module license you need
+
+The hosted connector (`perfex-mcp.themesic.com`) is included with a **Pro license** or an **Extended License** of the REST API module. Every license of the module includes the REST API, webhooks and the MCP server on your own CRM: clients that can send an HTTP header (Claude Code, Cursor, VS Code, n8n and others) can connect directly to `https://your-crm-domain/api/mcp` with the header `authtoken: YOUR_API_TOKEN`, without this plugin's connector. See the [direct connection guide](https://perfexcrm.themesic.com/apiguide/connect-ai-assistants/#direct).
 
 ## Other assistants
 

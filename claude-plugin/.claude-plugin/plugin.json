@@ -2,7 +2,7 @@
   "name": "themesic-perfex-mcp",
   "displayName": "REST API for Perfex CRM",
   "version": "1.0.0",
-  "description": "Lets Claude search, read, create and update customers, contacts, leads, invoices, estimates, proposals, projects, tasks, tickets, expenses and more in your own Perfex CRM through permission-filtered MCP tools. Requires REST API module for Perfex CRM, https://themesic.com/product/rest-api-module-for-perfex-crm",
+  "description": "Lets Claude search, read, create and update customers, contacts, leads, invoices, estimates, proposals, projects, tasks, tickets, expenses and more in your own Perfex CRM through permission-filtered MCP tools. Requires the REST API module for Perfex CRM with a Pro license or an Extended License (the hosted connector is a Pro feature), https://themesic.com/product/rest-api-module-for-perfex-crm",
   "author": {
     "name": "Themesic Interactive",
     "email": "support@themesic.com",
